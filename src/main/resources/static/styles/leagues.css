@@ -1,0 +1,12 @@
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #013DC4;
+    margin: auto;
+    /*// yellow #FEE715*/
+    /*// blue #00539C #013DC4*/
+}
+h1{
+    color: #FEE715;
+    text-align: center;
+}
