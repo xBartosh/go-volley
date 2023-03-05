@@ -1,4 +1,4 @@
-const { romanice } = Romanice;
+const {romanice} = Romanice;
 const standardConverter = romanice();
 
 let roundHeaders = document.getElementsByClassName("round");
@@ -10,13 +10,22 @@ let leaguesDivision = document.getElementsByClassName("league-division");
 convertLeaguesDivisionsToRoman();
 
 let generateButton = document.getElementById("generate-button");
-generateButton.addEventListener('click', generateProtocols)
+generateButton.addEventListener('click', generateProtocols);
 
-function generateProtocols(){
+const popup = document.getElementById("popup");
+
+let gameIdCheckboxes = document.querySelectorAll('input[type="checkbox"].game-id');
+for (let i = 0; i < gameIdCheckboxes.length; i++) {
+    gameIdCheckboxes[i].addEventListener("click", checkOutside);
+}
+
+
+
+function generateProtocols() {
     let checkedCheckboxes = Array.from(document.querySelectorAll('input[type="checkbox"].game-id:checked'));
-    checkedCheckboxes.forEach(checkedCheckboxes => console.log(checkedCheckboxes.value))
     let gameIdsFromCheckboxes = checkedCheckboxes.map(checkbox => checkbox.value);
-
+    showLoadingPopup();
+    window.location.hash = "#bottom";
 
     fetch("/api/generate-protocols", {
         method: 'POST',
@@ -30,6 +39,7 @@ function generateProtocols(){
     })
         .then(response => response.blob())
         .then(blob => {
+            hideLoadingPopup();
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
@@ -46,7 +56,7 @@ function generateProtocols(){
 }
 
 
-function addEventListenersToCheckboxes(){
+function addEventListenersToCheckboxes() {
     for (let i = 0; i < roundCheckboxes.length; i++) {
         roundCheckboxes[i].addEventListener('click', checkAllInside);
     }
@@ -56,13 +66,13 @@ function addEventListenersToCheckboxes(){
     }
 }
 
-function convertLeaguesDivisionsToRoman(){
+function convertLeaguesDivisionsToRoman() {
     for (let i = 0; i < leaguesDivision.length; i++) {
         leaguesDivision[i].textContent = standardConverter.toRoman(parseInt(leaguesDivision[i].textContent)) + " liga";
     }
 }
 
-function configureRoundHeaders(){
+function configureRoundHeaders() {
     for (let i = 0; i < roundHeaders.length; i++) {
         let spanArrow = document.createElement("span")
         spanArrow.className = "arrow";
@@ -77,18 +87,46 @@ function configureRoundHeaders(){
     }
 }
 
-function checkAllInside(event){
+function checkOutside(event) {
+    let leagueCheckbox = event.target.parentElement.parentElement.querySelector('input[type="checkbox"].league-checkbox');
+    let otherCheckboxes = event.target.parentElement.parentElement.querySelectorAll('input[type="checkbox"].game-id:checked');
+    let roundCheckbox = event.target.parentElement.parentElement.parentElement.parentElement.querySelector('input[type="checkbox"].checkbox-round-input');
+    let allCheckboxes = Array.from(roundCheckbox.parentElement.parentElement.querySelectorAll('input[type="checkbox"]:not(.checkbox-round-input)'));
+    console.log(allCheckboxes);
+    console.log(roundCheckbox);
+    if (event.target.checked) {
+        if (otherCheckboxes.length === 3) {
+            leagueCheckbox.checked = true;
+        }
+        if(allCheckboxes.every(function(checkbox) {return checkbox.checked;})){
+            roundCheckbox.checked = true;
+        }
+    } else {
+        leagueCheckbox.checked = false;
+        roundCheckbox.checked = false;
+    }
+}
+
+
+function checkAllInside(event) {
     const checkboxes = event.target.parentElement.parentElement.querySelectorAll('input[type="checkbox"]');
+    let roundCheckbox = event.target.parentElement.parentElement.parentElement.parentElement.querySelector('input[type="checkbox"].checkbox-round-input');
+    let allCheckboxes = Array.from(roundCheckbox.parentElement.parentElement.querySelectorAll('input[type="checkbox"]:not(.checkbox-round-input)'));
+
     event.stopPropagation();
     // loop through each checkbox and check it
-    if(event.target.checked){
+    if (event.target.checked) {
         checkboxes.forEach(checkbox => {
             checkbox.checked = true;
         });
-    }else {
+        if(allCheckboxes.every(function(checkbox) {return checkbox.checked;})){
+            roundCheckbox.checked = true;
+        }
+    } else {
         checkboxes.forEach(checkbox => {
             checkbox.checked = false;
         });
+        roundCheckbox.checked = false;
     }
 }
 
@@ -99,6 +137,14 @@ function toggleData(event) {
     } else {
         leaguesData.style.display = 'none';
     }
+}
+
+function showLoadingPopup() {
+    popup.style.display = "block";
+}
+
+function hideLoadingPopup() {
+    popup.style.display = "none";
 }
 
 

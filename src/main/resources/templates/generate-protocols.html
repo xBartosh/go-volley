@@ -34,6 +34,13 @@
         <button id="generate-button">Wygeneruj protokoły</button>
     </div>
 
+    <div id="popup">
+        <a id="bottom"></a>
+        <div id="loader">
+            <img th:src="@{/assets/loading.gif}" src="loading.gif" alt="Loading...">
+        </div>
+    </div>
+
     <!-- Romanian converter -->
     <script src="https://cdn.jsdelivr.net/npm/romanice/dist/romanice.min.js"></script>
     <script type="text/javascript" th:src="@{/js/generate-protocols.js}" src="../static/js/league.js"></script>
