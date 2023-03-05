@@ -39,7 +39,7 @@ public class ProtocolPartsFactory {
         return image;
     }
 
-    private static Paragraph createTitle(Font font) throws DocumentException, IOException {
+    private static Paragraph createTitle(Font font) {
         String title = "PROTOKÓŁ MECZOWY";
         Paragraph paragraph = new Paragraph(title, font);
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
@@ -61,11 +61,12 @@ public class ProtocolPartsFactory {
     }
 
     private static PdfPTable createGameTable(Font font, Game game) throws DocumentException, IOException {
-        PdfPTable gameTable = new PdfPTable(6);
-        gameTable.setWidths(new float[]{0.4f, 3f, 0.7f, 0.4f, 3f, 0.7f});
+        PdfPTable gameTable = new PdfPTable(4);
+        gameTable.setWidths(new float[]{0.4f, 3f, 0.4f, 3f});
         gameTable.setSpacingBefore(10);
         gameTable.setHorizontalAlignment(PdfPTable.ALIGN_LEFT);
         gameTable.setWidthPercentage(100);
+
         BaseFont baseFont = BaseFont.createFont(PATH_TO_PROTOCOLS_FOLDER + "/font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         Font teamNameFont = new Font(baseFont, Font.BOLDITALIC);
         teamNameFont.setSize(16);
@@ -74,26 +75,15 @@ public class ProtocolPartsFactory {
         Team teamB = game.getTeamB();
 
         PdfPCell teamACell = createTeamHeaderName(teamA, "A", font, teamNameFont);
-
-        PdfPCell mvp = new PdfPCell(new Paragraph("MVP", font));
-        mvp.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-
         PdfPCell teamBCell = createTeamHeaderName(teamB, "B", font, teamNameFont);
 
         gameTable.addCell(teamACell);
-        gameTable.addCell(mvp);
         gameTable.addCell(teamBCell);
-        gameTable.addCell(mvp);
-
-        int teamANumOfPlayers = teamA.getPlayers().size();
-        int teamBNumOfPlayres = teamB.getPlayers().size();
-        int maxSize = Math.max(teamANumOfPlayers, teamBNumOfPlayres);
 
         Font playerFont = new Font(baseFont, Font.NORMAL);
         playerFont.setSize(13);
 
-        PdfPCell mvpCell = new PdfPCell(new Phrase("   "));
-
+        int maxSize = 15;
         for (int i = 0; i < maxSize; i++) {
             PdfPCell numberCell = new PdfPCell(new Phrase(Integer.toString(i + 1), font));
             numberCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -107,7 +97,6 @@ public class ProtocolPartsFactory {
                 gameTable.addCell(emptyPlayerNameCell);
             }
 
-            gameTable.addCell(mvpCell);
             gameTable.addCell(numberCell);
 
             if (teamB.getPlayers().size() > i) {
@@ -115,10 +104,7 @@ public class ProtocolPartsFactory {
             } else {
                 gameTable.addCell(emptyPlayerNameCell);
             }
-
-            gameTable.addCell(mvpCell);
         }
-
 
         return gameTable;
     }
