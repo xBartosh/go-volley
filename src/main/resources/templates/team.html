@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title th:text="${team.name}">Go Volley</title>
+</head>
+<body>
+<section>
+    <link rel="stylesheet" th:href="@{/css/team.css}">
+
+    <div class="team-name">
+        <p id="team" th:text="${team.name}" placeholder="Edytuj nazwę drużyny" contenteditable="true"></p>
+    </div>
+
+    <div class="players">
+        <ul id="playersUl">
+            <div class="player-manage" id="player-manage-fullname" th:each="player : ${team.players}">
+                <li class="player" th:text="|${player.firstName} ${player.lastName}|"></li>
+                <button class="delete-player">Usuń zawodnika</button>
+            </div>
+            <div class="player-manage" id="player-manage-add">
+                <div id="add-player-input">
+                    <input class="player-name" id="first-name" type="text" onkeyup="checkInputs()" placeholder="Imię">
+                    <input class="player-name" id="last-name" type="text" onkeyup="checkInputs()" placeholder="Nazwisko">
+                </div>
+                <button id="add-player" onclick="addPlayer()" disabled>Dodaj zawodnika</button>
+            </div>
+            <div class="player-manage" id="player-manage-save">
+                <button id="save-changes" onclick="saveChanges()" disabled>Zapisz zmiany</button>
+            </div>
+        </ul>
+    </div>
+
+    <script th:src="@{/js/team.js}"></script>
+</section>
+</body>
+</html>

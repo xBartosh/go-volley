@@ -11301,6 +11301,15 @@ textarea.form-control-lg {
   font-size: 1.2rem;
 }
 
+.company-name {
+  text-decoration: none;
+  color: black;
+}
+
+.company-name:hover {
+  cursor: pointer;
+}
+
 #sidebar-wrapper .list-group {
   width: 15rem;
 }
@@ -11311,6 +11320,10 @@ textarea.form-control-lg {
 
 body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   margin-left: 0;
+}
+
+.league-dropdown {
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -11327,3 +11340,4 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: -15rem;
   }
 }
+

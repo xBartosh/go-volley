@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Generator protokołów</title>
+</head>
+<body>
+
+<section>
+    <link rel="stylesheet" th:href="@{/css/generate-protocols.css}">
+
+    <div class="round-data" th:each="roundData : ${roundsData}">
+        <div class="round" th:class="round" th:text="|${roundData.round} kolejka|">
+            <span class="arrow"></span>
+        </div>
+        <div class="leagues-data">
+            <div class="league-data" th:each="league : ${roundData.gamesForDivision}">
+                <div class="league">
+                    <div class="league-date" th:text="${league.getKey().getDateTime()}"></div>
+                    <div class="league-division" th:text="${league.getKey().getDivision()}"></div>
+                    <input class="league-checkbox" type="checkbox">
+                </div>
+                <div class="game" th:each="game : ${league.getValue()}">
+                    <input type="checkbox" class="game-id" th:value="${game.id}">
+                    <div class="teams">
+                        <span class="team" th:text="${game.teamA.name}"></span>
+                        <span class="team" th:text="${game.teamB.name}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submit">
+        <button id="generate-button">Wygeneruj protokoły</button>
+    </div>
+
+    <!-- Romanian converter -->
+    <script src="https://cdn.jsdelivr.net/npm/romanice/dist/romanice.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/generate-protocols.js}" src="../static/js/league.js"></script>
+</section>
+
+</body>
+</html>

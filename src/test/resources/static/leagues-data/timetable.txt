@@ -1,0 +1,205 @@
+Liga 1
+KOLEJKA 1  27.02.2023 g.19:30
+Plażunia : Magic Cafe 
+Papa Gelato : Rapapara 
+Artro-Med Saska : Michr Volley  
+KOLEJKA 2 06.03.2023 g.21:00 
+Rapapara : Artro-Med Saska 
+Plażunia : Papa Gelato
+Magic Cafe : Michr Volley
+KOLEJKA 3 13.03.2023 g.19:30 
+Papa Gelato : Magic Cafe 
+Artro-Med Saska : Plażunia
+Michr Volley : Rapapara
+KOLEJKA 4 20.03.2023 g.21:00 
+Magic Cafe : Rapapara 
+Plażunia : Michr Volley 
+Papa Gelato : Artro-Med Saska  
+KOLEJKA 5 27.03.2023 g.19:30 
+Artro-Med Saska : Magic Cafe 
+Michr Volley : Papa Gelato 
+Rapapara : Plażunia     
+KOLEJKA 6 03.04.2023 g.21:00 
+Plażunia : Magic Cafe 
+Papa Gelato : Rapapara
+Artro-Med Saska : Michr Volley  
+KOLEJKA 7 17.04.2023 g.19:30 
+Magic Cafe : Michr Volley
+Rapapara : Artro-Med Saska
+Plażunia : Papa Gelato  
+KOLEJKA 8 24.04.2023 g.21:00 
+Papa Gelato : Magic Cafe 
+Artro-Med Saska : Plażunia
+Michr Volley : Rapapara  
+KOLEJKA 9 08.05.2023 g.19:30 
+Magic Cafe : Rapapara 
+Plażunia : Michr Volley 
+Papa Gelato : Artro-Med Saska  
+KOLEJKA 10 15.05.2023 g.21:00
+Artro-Med Saska : Magic Cafe 
+Michr Volley : Papa Gelato 
+Rapapara : Plażunia
+Liga 2
+KOLEJKA 1  27.02.2023 g.21:00
+Zmordowane Talenty : Jazzy Niepołomice I
+Motorola Solutions : EVT
+Kulturyści : Sportivo  
+KOLEJKA 2 06.03.2023 g.19:30 
+Jazzy Niepołomice I : Sportivo 
+EVT : Kulturyści 
+Zmordowane Talenty : Motorola Solutions
+KOLEJKA 3 13.03.2023 g.21:00
+Motorola Solutions : Jazzy Niepołomice I
+Kulturyści : Zmordowane Talenty
+Sportivo : EVT 
+KOLEJKA 4 20.03.2023 g.19:30 
+Jazzy Niepołomice I : EVT 
+Zmordowane Talenty : Sportivo
+Motorola Solutions : Kulturyści
+KOLEJKA 5 27.03.2023 g.21:00 
+Kulturyści : Jazzy Niepołomice I 
+Sportivo : Motorola Solutions 
+EVT : Zmordowane Talenty  
+KOLEJKA 6  03.04.2023 g.19:30 
+Zmordowane Talenty : Jazzy Niepołomice I
+Motorola Solutions : EVT
+Kulturyści : Sportivo  
+KOLEJKA 7 17.04.2023 g.21:00 
+Jazzy Niepołomice I : Sportivo 
+EVT : Kulturyści 
+Zmordowane Talenty : Motorola Solutions
+KOLEJKA 8 24.04.2023 g.19:30
+Motorola Solutions : Jazzy Niepołomice I
+Kulturyści : Zmordowane Talenty
+Sportivo : EVT  
+KOLEJKA 9 08.05.2023 g.21:00 
+Jazzy Niepołomice I : EVT 
+Zmordowane Talenty : Sportivo 
+Motorola Solutions : Kulturyści  
+KOLEJKA 10 15.05.2023 g.19:00
+Kulturyści : Jazzy Niepołomice I 
+Sportivo : Motorola Solutions 
+EVT : Zmordowane Talenty
+Liga 3
+KOLEJKA 1 28.02.2023 g.19:50 
+Wielicki Koks : Czarne Owce 
+PZK : AZS UP Oldboys 
+Geocollect : Piano Invest  
+KOLEJKA 2 07.03.2023 g.21:10 
+Czarne Owce : Piano Invest  
+AZS UP Oldboys : Geocollect 
+Wielicki Koks : PZK  
+KOLEJKA 3 14.03.2023 g.19:50 
+PZK : Czarne Owce 
+Geocollect : Wielicki Koks 
+Piano Invest : AZS UP Oldboys  
+KOLEJKA 4 21.03.2023 g.21:10 
+Czarne Owce : AZS UP Oldboys 
+Wielicki Koks : Piano Invest 
+PZK : Geocollect  
+KOLEJKA 5 28.03.2023 g.19:50 
+Geocollect : Czarne Owce 
+Piano Invest : PZK 
+AZS UP Oldboys : Wielicki Koks       
+KOLEJKA 6 04.04.2023 g.21:10 
+Wielicki Koks : Czarne Owce 
+PZK : AZS UP Oldboys 
+Geocollect : Piano Invest  
+KOLEJKA 7 18.04.2023 g.19:50 
+Czarne Owce : Piano Invest  
+AZS UP Oldboys : Geocollect 
+Wielicki Koks : PZK  
+KOLEJKA 8 25.04.2023 g.21:00 
+PZK : Czarne Owce 
+Geocollect : Wielicki Koks 
+Piano Invest : AZS UP Oldboys  
+KOLEJKA 9 09.05.2023 g.19:50 
+Czarne Owce : AZS UP Oldboys 
+Wielicki Koks : Piano Invest 
+PZK : Geocollect  
+KOLEJKA 10 16.05.2023 g.21:10 
+Geocollect : Czarne Owce 
+Piano Invest : PZK 
+AZS UP Oldboys : Wielicki Koks 
+Liga 4
+KOLEJKA 1 28.02.2023 g.21:10 
+Rectus : Jazzy Niepołomice II 
+Złote Chłopaki : Healthtlen 
+Skalmar : Kangury  
+KOLEJKA 2 07.03.2023 g.19:50 
+Jazzy Niepołomice II : Kangury 
+Healthtlen : Skalmar 
+Rectus : Złote Chłopaki  
+KOLEJKA 3 14.03.2023 g.21:10 
+Złote Chłopaki : Jazzy Niepołomice II 
+Skalmar : Rectus 
+Kangury : Healthtlen  
+KOLEJKA 4 21.03.2023 g.19:50 
+Jazzy Niepołomice II : Healthtlen 
+Rectus : Kangury 
+Złote Chłopaki : Skalmar   
+KOLEJKA 5 28.03.2023 g.21:10 
+Skalmar : Jazzy Niepołomice II 
+Kangury : Złote Chłopaki 
+Healthtlen : Rectus   
+KOLEJKA 6 04.04.2023 g.19:50 
+Rectus : Jazzy Niepołomice II 
+Złote Chłopaki : Healthtlen 
+Skalmar : Kangury  
+KOLEJKA 7 18.04.2023 g.21:10
+Jazzy Niepołomice II : Kangury 
+Healthtlen : Skalmar 
+Rectus : Złote Chłopaki  
+KOLEJKA 8 25.04.2023 g.19:50 
+Złote Chłopaki : Jazzy Niepołomice II 
+Skalmar : Rectus 
+Kangury : Healthtlen  
+KOLEJKA 9 09.05.2023 g.21:10 
+Jazzy Niepołomice II : Healthtlen 
+Rectus : Kangury 
+Złote Chłopaki : Skalmar  
+KOLEJKA 10 16.05.2023 g.19:50 
+Skalmar : Jazzy Niepołomice II 
+Kangury : Złote Chłopaki 
+Healthtlen : Rectus 
+Liga 5
+KOLEJKA 1 01.03.2023 g.21:00 
+Czarty : Czarno Czarni 
+Brzeskie Dziki : Cisco 
+Rajska 4FUN Team : Rajska Team  
+KOLEJKA 2 08.03.2023 g.21:00 
+Czarno Czarni : Rajska Team 
+Cisco : Rajska 4FUN Team 
+Czarty : Brzeskie Dziki  
+KOLEJKA 3 15.03.2023 g.21:00 
+Brzeskie Dziki : Czarno Czarni 
+Rajska 4FUN Team : Czarty 
+Rajska Team : Cisco  
+KOLEJKA 4 22.03.2023 g.21:00 
+Czarno Czarni : Cisco 
+Czarty : Rajska Team 
+Brzeskie Dziki : Rajska 4FUN Team  
+KOLEJKA 5 29.03.2023 g.21:00
+Rajska 4FUN Team : Czarno Czarni 
+Rajska Team : Brzeskie Dziki 
+Cisco : Czarty                     
+KOLEJKA 6 05.04.2023 g.21:00 
+Czarty : Czarno Czarni 
+Brzeskie Dziki : Cisco 
+Rajska 4FUN Team : Rajska Team  
+KOLEJKA 7 19.04.2023 g.21:00 
+Czarno Czarni : Rajska Team 
+Cisco : Rajska 4FUN Team 
+Czarty : Brzeskie Dziki  
+KOLEJKA 8 26.04.2023 g.21:00 
+Brzeskie Dziki : Czarno Czarni 
+Rajska 4FUN Team : Czarty 
+Rajska Team : Cisco  
+KOLEJKA 9 10.05.2023 g.21:00 
+Czarno Czarni : Cisco 
+Czarty : Rajska Team 
+Brzeskie Dziki : Rajska 4FUN Team  
+KOLEJKA 10 17.05.2023 g.21:00
+Rajska 4FUN Team : Czarno Czarni 
+Rajska Team : Brzeskie Dziki 
+Cisco : Czarty

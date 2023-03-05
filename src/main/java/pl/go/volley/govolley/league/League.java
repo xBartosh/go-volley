@@ -1,10 +1,7 @@
 package pl.go.volley.govolley.league;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pl.go.volley.govolley.team.Team;
 import pl.go.volley.govolley.game.Game;
 
@@ -19,7 +16,7 @@ import java.util.List;
 @Table(name = "league")
 public class League {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer division;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "league")

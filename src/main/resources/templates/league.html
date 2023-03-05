@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title th:text="|League ${league.division}|">Leagues</title>
+</head>
+<body>
+
+<section>
+    <link rel="stylesheet" th:href="@{/css/league.css}">
+
+    <div class="division-buttons">
+        <th:block>
+            <button id="division-button" th:text="${league.division}">I</button>
+        </th:block>
+    </div>
+
+    <div class="teams">
+        <ul class="teamUl" th:remove="all-but-first">
+            <div class="team-manage" th:each="team : ${league.teams}">
+                <li class="team" th:text="${team.name}"></li>
+                <button id="edit-team"><a th:href="@{'/league/' + ${league.division} + '/' + ${team.name}}">Edytuj drużynę</a></button>
+            </div>
+            <li class="team">Kopara</li>
+            <li class="team">FC Wilki</li>
+            <li class="team">Ryjogrzmoty</li>
+            <li class="team">Siatkarze</li>
+        </ul>
+    </div>
+
+    <!-- Romanian converter -->
+    <script src="https://cdn.jsdelivr.net/npm/romanice/dist/romanice.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/league.js}" src="../static/js/league.js"></script>
+</section>
+
+
+</body>
+</html>

@@ -5,7 +5,7 @@
 */
 // 
 // Scripts
-// 
+//
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -24,3 +24,9 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+let leagueDropdowns = document.getElementsByClassName("dropdown-item");
+let leftPanel = document.getElementById("sidebar-wrapper");
+for (let i = 0; i < leagueDropdowns.length; i++) {
+    leagueDropdowns[i].style.width = (leftPanel.offsetWidth - 2) + 'px';
+}

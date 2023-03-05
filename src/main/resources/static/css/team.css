@@ -1,0 +1,204 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.team-name {
+    margin: 5% auto 2% auto;
+    text-align: center;
+    height: 10%;
+    width: 100%;
+}
+
+#team {
+    height: 80%;
+    width: 100%;
+    font-size: 150%;
+    font-weight: 500;
+    caret-color: black;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    margin: auto;
+}
+
+#team:focus {
+    outline: none;
+    box-shadow: 0 0 10px #ccc;
+}
+
+#team:before {
+    caret-color: black;
+}
+
+#team:empty::before {
+    content: attr(placeholder);
+    color: #aaa;
+}
+
+#team:hover {
+    cursor: text;
+}
+
+.players {
+    margin: auto;
+    text-align: left;
+    height: 60%;
+    padding: 1rem 0;
+}
+
+#playersUl {
+    list-style: none;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+}
+
+.player-manage {
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+
+.player {
+    width: 100%;
+    font-size: 125%;
+    font-weight: 600;
+}
+
+.delete-player, #add-player {
+    height: 30%;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-left: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    border: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 100%;
+}
+
+#change-team-name {
+    background-color: #0a53be;
+}
+
+.delete-player {
+    background-color: #dc3545;
+}
+
+#add-player {
+    background-color: #0077FF;
+}
+
+.delete-player:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#add-player:hover {
+    background-color: #005CE6;
+}
+
+#add-player[disabled] {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+#player-manage-add {
+    justify-content: space-between;
+}
+
+#add-player-input {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 50%;
+    align-items: center;
+}
+
+
+.player-name {
+    width: 45%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.player-name:focus {
+    outline: none;
+    border-color: #0077FF;
+}
+
+#player-manage-save {
+    border: none;
+    justify-content: center;
+}
+
+#save-changes {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#save-changes:hover {
+    background-color: #3e8e41;
+}
+
+#save-changes:active {
+    background-color: #3e8e41;
+    transform: translateY(1px);
+}
+
+#save-changes[disabled] {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+#save-message {
+    margin: auto;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    #playersUl, #team {
+        width: 50%;
+    }
+
+    .player {
+        font-size: 150%;
+    }
+
+    #add-player, .delete-player {
+        font-size: 125%;
+    }
+
+    #team {
+        width: 50%;
+        font-size: 200%;
+    }
+}

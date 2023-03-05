@@ -2,6 +2,7 @@ package pl.go.volley.govolley.league;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,5 +18,13 @@ public class LeagueService {
 
     public Optional<List<League>> findAllLeagues(){
         return Optional.of(Lists.newArrayList(leagueRepository.findAll()));
+    }
+
+    public Optional<List<League>> findAllLeaguesOrderByDivision(){
+        return leagueRepository.findAll(Sort.by(Sort.Direction.ASC, "division"));
+    }
+
+    public Optional<League> findLeagueByDivision(Integer division){
+        return leagueRepository.findLeagueByDivision(division);
     }
 }
