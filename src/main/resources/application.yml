@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://sql7.freesqldatabase.com:3306/sql7601764
-    username: sql7601764
-    password: QK6tf64IlQ
+    url: jdbc:mysql://sql7.freesqldatabase.com:3306/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     show-sql: true
     hibernate:
