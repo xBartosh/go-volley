@@ -1,5 +1,6 @@
 package pl.go.volley.govolley.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,6 +17,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig implements WebMvcConfigurer {
+    @Value("${username}")
+    private String username;
+    @Value("${password}")
+    private String password;
+
     @Bean
     public SecurityFilterChain appSecurity(HttpSecurity http) throws Exception {
         http
@@ -30,8 +36,8 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
-        UserDetails admin = User.withUsername("admin")
-                .password(encoder.encode("password"))
+        UserDetails admin = User.withUsername(username)
+                .password(encoder.encode(password))
                 .roles("USER").build();
         return new InMemoryUserDetailsManager(admin);
     }
