@@ -28,7 +28,7 @@ class ProtocolGeneratorTest {
                 new Player("Dominik", "Kielar"),
                 new Player("Dominik", "Kielar")));
 
-        Team teamB = new Team("JAZZY NIEPOŁOMICE II");
+        Team teamB = new Team("JAZZY_NIEPOŁOMICE_II");
         teamB.setPlayers(List.of(new Player("Michał", "Szpakowski"),
                 new Player("Żelisław", "Żeżyński"),
                 new Player("Kierownik", "Kielar"),

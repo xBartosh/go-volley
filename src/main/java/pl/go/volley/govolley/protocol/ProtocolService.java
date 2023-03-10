@@ -1,6 +1,7 @@
 package pl.go.volley.govolley.protocol;
 
 import org.apache.commons.collections4.IterableUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import pl.go.volley.govolley.dto.LeagueDateDTO;
 import pl.go.volley.govolley.game.Game;
@@ -27,6 +28,7 @@ public class ProtocolService {
         this.protocolGenerator = protocolGenerator;
     }
 
+    @Cacheable("protocol-data")
     public List<RoundProtocolData> getLeagueProtocolData() {
         List<League> leagues = IterableUtils.toList(leagueRepository.findAll());
         List<Integer> rounds = gameRepository.findAllRoundValues();
