@@ -22,6 +22,7 @@ th:replace="~{layout :: layout(~{::title}, ~{::section})}">
                 <th class="rank"></th>
                 <th>MIEJSCE</th>
                 <th th:class="team">DRUŻYNA</th>
+                <th>MECZE</th>
                 <th>PUNKTY</th>
                 <th>ZWYCIĘSTWA</th>
                 <th>SETY</th>
@@ -37,6 +38,7 @@ th:replace="~{layout :: layout(~{::title}, ~{::section})}">
                 </td>
                 <td th:class="position" th:text="${iterStatus.index + 1}"></td>
                 <td class="team"><a th:text="${team.teamName}" class="team-name" th:href="@{'/league/' + ${league.division} + '/' + ${team.teamName}}">Team A</a></td>
+                <td th:text="${team.gamesPlayed}">2</td>
                 <td th:text="${team.points}">20</td>
                 <td th:text="${team.wins}">10</td>
                 <td th:text="|${#numbers.formatDecimal(team.setsWon, 1, 0)}:${#numbers.formatDecimal(team.setsLost, 1, 0)}|">100-50</td>
