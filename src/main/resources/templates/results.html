@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Generator protokołów</title>
+</head>
+<body>
+
+<section>
+    <link rel="stylesheet" th:href="@{/css/generate-protocols.css}">
+    <link rel="stylesheet" th:href="@{/css/results.css}">
+
+    <div class="round-data" th:each="roundData : ${roundsData}">
+        <div class="round" th:class="round" th:text="|${roundData.round} kolejka|">
+            <span class="arrow"></span>
+        </div>
+        <div class="leagues-data">
+            <div class="league-data" th:each="league : ${roundData.gamesForDivision}">
+                <div class="league">
+                    <div class="league-date" th:text="${league.key.dateTime}"></div>
+                    <div class="league-division" th:text="${league.key.division}"></div>
+                </div>
+                <div class="game" th:each="game : ${league.getValue()}">
+                   <div class="result">
+                       <div th:class="teams">
+                           <span th:text="${game.teamA.name}"></span>
+                           <span th:text="${game.teamB.name}"></span>
+                       </div>
+                       <div th:class="score">
+                           <div th:class="set">
+                               <input class="teamAScore" type="text" placeholder="S" th:placeholder="${game.teamAScore != null ? game.teamAScore : 'S'}">
+                               <input class="teamBScore" type="text" placeholder="S" th:placeholder="${game.teamBScore != null ? game.teamBScore : 'S'}">
+                           </div>
+                           <div th:class="point">
+                               <input class="teamASmallPoints" type="text" placeholder="P" th:placeholder="${game.teamASmallPoints != null ? game.teamASmallPoints : 'P'}">
+                               <input class="teamBSmallPoints" type="text" placeholder="P" th:placeholder="${game.teamBSmallPoints != null ? game.teamBSmallPoints : 'P'}">
+                           </div>
+                           <div th:class="save">
+                               <button th:value="${game.id}" class="save-button"></button>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Romanian converter -->
+    <script src="https://cdn.jsdelivr.net/npm/romanice/dist/romanice.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/results.js}" src="../static/js/results.js"></script>
+</section>
+
+</body>
+</html>

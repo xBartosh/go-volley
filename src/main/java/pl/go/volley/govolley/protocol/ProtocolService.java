@@ -3,7 +3,7 @@ package pl.go.volley.govolley.protocol;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import pl.go.volley.govolley.dto.LeagueDateDTO;
+import pl.go.volley.govolley.league.dto.LeagueDateDTO;
 import pl.go.volley.govolley.game.Game;
 import pl.go.volley.govolley.game.GameRepository;
 import pl.go.volley.govolley.league.League;
@@ -29,7 +29,7 @@ public class ProtocolService {
     }
 
     @Cacheable("protocol-data")
-    public List<RoundProtocolData> getLeagueProtocolData() {
+    public List<RoundData> getRoundData() {
         List<League> leagues = IterableUtils.toList(leagueRepository.findAll());
         List<Integer> rounds = gameRepository.findAllRoundValues();
 
@@ -41,7 +41,7 @@ public class ProtocolService {
                 gamesForDivision.put(new LeagueDateDTO(dateTime, league.getDivision()), gamesForRoundAndLeague);
             });
 
-            return new RoundProtocolData(round, gamesForDivision.entrySet().stream()
+            return new RoundData(round, gamesForDivision.entrySet().stream()
                     .sorted(Comparator.comparing(entry -> entry.getKey().getDivision()))
                     .collect(Collectors.toMap(
                             Map.Entry::getKey,

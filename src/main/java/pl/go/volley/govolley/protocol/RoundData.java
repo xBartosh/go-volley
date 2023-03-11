@@ -1,7 +1,7 @@
 package pl.go.volley.govolley.protocol;
 
 import lombok.*;
-import pl.go.volley.govolley.dto.LeagueDateDTO;
+import pl.go.volley.govolley.league.dto.LeagueDateDTO;
 import pl.go.volley.govolley.game.Game;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Map;
 @Builder
 @Getter
 @Setter
-public class RoundProtocolData {
+public class RoundData {
     private Integer round;
     private Map<LeagueDateDTO, List<Game>> gamesForDivision;
 }

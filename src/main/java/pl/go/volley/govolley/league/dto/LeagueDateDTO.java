@@ -1,4 +1,4 @@
-package pl.go.volley.govolley.dto;
+package pl.go.volley.govolley.league.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

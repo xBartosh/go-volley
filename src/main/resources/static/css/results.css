@@ -1,0 +1,80 @@
+.game {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+}
+
+.league {
+    padding-bottom: 0;
+}
+
+.league-data {
+    flex-basis: 18%;
+}
+
+.save-message {
+    text-align: center;
+    color: green;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 0.5rem;
+}
+
+.teams {
+    white-space: nowrap;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.set, .point {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input {
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
+    font-size: 80%;
+}
+
+input::placeholder {
+    color: #999;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.save {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.save-button {
+    background-image: url("../assets/save.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: transparent;
+}

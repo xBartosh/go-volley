@@ -1,16 +1,15 @@
-package pl.go.volley.govolley.api;
+package pl.go.volley.govolley.api.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.go.volley.govolley.league.League;
 import pl.go.volley.govolley.league.LeagueService;
+import pl.go.volley.govolley.league.dto.LeagueStatisticsDTO;
 import pl.go.volley.govolley.team.Team;
 import pl.go.volley.govolley.team.TeamService;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -26,16 +25,14 @@ public class LeagueController {
     }
 
     @GetMapping
-    public String homePage(Model model) {
-        Optional<List<League>> leagues = leagueService.findAllLeagues();
-        model.addAttribute("leagues", leagues.get());
+    public String homePage() {
         return "index";
     }
 
     @GetMapping("/{division}")
     public String getLeague(@PathVariable Integer division,
                             Model model) {
-        Optional<League> league = leagueService.findLeagueByDivision(division);
+        Optional<LeagueStatisticsDTO> league = leagueService.findLeagueByDivisionWithTeamStatistics(division);
         if (league.isEmpty()) {
             return "error";
         }

@@ -25,66 +25,98 @@ body {
     margin: auto;
     text-align: left;
     height: 60%;
-}
-
-.teamUl {
-    list-style: none;
     width: 100%;
-    padding: 0;
+    overflow-x: auto;
 }
 
-.team-manage {
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    padding: 1rem;
-    align-items: center;
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
     border-bottom: 1px solid #ccc;
+    white-space: nowrap;
+}
+
+th {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e6e6e6;
+}
+
+.position {
+    text-align: left;
 }
 
 .team {
-    width: 100%;
-    font-size: 125%;
-    font-weight: 600;
+    text-align: left;
 }
 
-#edit-team {
-    background-color: #0077FF;
-    height: 30%;
-    color: #FFFFFF;
-    font-weight: bold;
-    margin-left: auto;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-    border: none;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 100%;
-}
-
-#edit-team > a {
+.green-rank {
+    background-color: #24A30A;
     color: white;
-    text-decoration: none;
 }
 
-#edit-team:hover {
-    background-color: #005CE6;
-    transform: translateY(-1px);
+.red-rank {
+    background-color: #ea190a;
+    color: white;
+}
+
+td:first-child {
+    width: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-top: 0.5rem solid black;
+    margin: 0 auto;
+}
+
+.rank {
+    width: 10%;
+}
+
+.position {
+    font-weight: bold;
+    text-align: center;
+}
+
+.team-name {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+.team-name:hover {
+    text-decoration: underline;
 }
 
 @media (min-width: 768px) {
-    .team-manage, #division-button {
+    #division-button {
         width: 60%;
     }
 
-    #edit-team {
-        font-size: 125%;
+    table {
+        width: 60%;
     }
-
-    .team {
-        font-size: 200%;
-    }
-
 }

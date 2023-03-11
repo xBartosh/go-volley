@@ -15,10 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig implements WebMvcConfigurer {
-    @Value("${username}")
-    private String username;
-    @Value("${password}")
-    private String password;
+//    @Value("${username}")
+    private String username = "admin";
+//    @Value("${password}")
+    private String password = "password";
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -42,6 +42,8 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .authorizeHttpRequests()
                 .requestMatchers("/**").authenticated()
                 .and().formLogin()
+                .and()
+                .httpBasic()
                 .and().build();
     }
 }

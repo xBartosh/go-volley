@@ -1,10 +1,10 @@
-package pl.go.volley.govolley.api;
+package pl.go.volley.govolley.api.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.go.volley.govolley.protocol.RoundProtocolData;
+import pl.go.volley.govolley.protocol.RoundData;
 import pl.go.volley.govolley.protocol.ProtocolService;
 
 import java.util.List;
@@ -20,8 +20,8 @@ public class GenerateProtocolController {
 
     @GetMapping
     public String generateProtocols(Model model) {
-        List<RoundProtocolData> leagueProtocolData = protocolService.getLeagueProtocolData();
-        model.addAttribute("roundsData", leagueProtocolData);
+        List<RoundData> roundsData = protocolService.getRoundData();
+        model.addAttribute("roundsData", roundsData);
 
         return "generate-protocols";
     }

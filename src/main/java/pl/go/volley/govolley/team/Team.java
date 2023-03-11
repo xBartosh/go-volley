@@ -6,6 +6,7 @@ import lombok.*;
 import pl.go.volley.govolley.game.Game;
 import pl.go.volley.govolley.league.League;
 import pl.go.volley.govolley.player.Player;
+import pl.go.volley.govolley.team.statistics.TeamStatistics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +30,18 @@ public class Team {
     @JoinColumn(name = "league_id")
     @JsonIgnore
     private League league;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "teamA")
     @JsonIgnore
     private List<Game> gamesA = new ArrayList<>();
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "teamB")
     @JsonIgnore
-    private List<Game> gamesB;
+    private List<Game> gamesB = new ArrayList<>();
+
+    @OneToOne(mappedBy = "team", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private TeamStatistics teamStatistics;
 
     public Team(String name){
         this.name = name;

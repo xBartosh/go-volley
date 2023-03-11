@@ -20,12 +20,17 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "team_a_id")
     private Team teamA;
+    private Integer teamAScore;
+    private Integer teamASmallPoints;
     @ManyToOne
     @JoinColumn(name = "team_b_id")
     private Team teamB;
+    private Integer teamBScore;
+    private Integer teamBSmallPoints;
     private Timestamp date;
     private Integer round;
     @ManyToOne
