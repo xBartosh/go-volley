@@ -15,9 +15,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig implements WebMvcConfigurer {
-//    @Value("${username}")
+    @Value("${username}")
     private String username = "admin";
-//    @Value("${password}")
+    @Value("${password}")
     private String password = "password";
 
     @Bean
