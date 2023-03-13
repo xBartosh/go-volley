@@ -19,11 +19,13 @@ for (let i = 0; i < gameIdCheckboxes.length; i++) {
     gameIdCheckboxes[i].addEventListener("click", checkOutside);
 }
 
+let generationMessage = document.getElementById("generation-message");
 
 
 function generateProtocols() {
     let checkedCheckboxes = Array.from(document.querySelectorAll('input[type="checkbox"].game-id:checked'));
     let gameIdsFromCheckboxes = checkedCheckboxes.map(checkbox => checkbox.value);
+    hideGenerationMessage();
     showLoadingPopup();
     window.location.hash = "#bottom";
 
@@ -37,17 +39,27 @@ function generateProtocols() {
         }),
         credentials: 'include'
     })
-        .then(response => response.blob())
-        .then(blob => {
-            hideLoadingPopup();
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'protokoly.pdf';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            window.URL.revokeObjectURL(url);
+        .then(response => {
+            if (response.ok) {
+                response.blob().then(blob => {
+                    hideLoadingPopup();
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'protokoly.pdf';
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    window.URL.revokeObjectURL(url);
+                    generationMessage.textContent = "Pomyślnie wygenerowano protokół!";
+                    generationMessage.style.color = "green";
+                    showGenerationMessage();
+                });
+            } else {
+                generationMessage.textContent = "Generacja protokołu nie powiodła się. Spróbuj ponownie";
+                generationMessage.style.color = "red";
+                showGenerationMessage();
+            }
         })
         .catch(error => {
             console.error(error)
@@ -98,7 +110,9 @@ function checkOutside(event) {
         if (otherCheckboxes.length === 3) {
             leagueCheckbox.checked = true;
         }
-        if(allCheckboxes.every(function(checkbox) {return checkbox.checked;})){
+        if (allCheckboxes.every(function (checkbox) {
+            return checkbox.checked;
+        })) {
             roundCheckbox.checked = true;
         }
     } else {
@@ -119,7 +133,9 @@ function checkAllInside(event) {
         checkboxes.forEach(checkbox => {
             checkbox.checked = true;
         });
-        if(allCheckboxes.every(function(checkbox) {return checkbox.checked;})){
+        if (allCheckboxes.every(function (checkbox) {
+            return checkbox.checked;
+        })) {
             roundCheckbox.checked = true;
         }
     } else {
@@ -145,6 +161,14 @@ function showLoadingPopup() {
 
 function hideLoadingPopup() {
     popup.style.display = "none";
+}
+
+function showGenerationMessage() {
+    generationMessage.style.display = "block";
+}
+
+function hideGenerationMessage() {
+    generationMessage.style.display = "none";
 }
 
 

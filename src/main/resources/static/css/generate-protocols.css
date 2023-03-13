@@ -148,10 +148,14 @@
     background-color: #0069d9;
 }
 
-#popup {
+#popup, #generation-message {
     text-align: center;
     display: none;
     margin-bottom: 2vh;
+}
+
+#generation-message {
+    font-size: 100%;
 }
 
 @media (min-width: 768px) {
