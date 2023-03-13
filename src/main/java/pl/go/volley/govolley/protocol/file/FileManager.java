@@ -16,23 +16,23 @@ import java.util.stream.Stream;
 public class FileManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileManager.class);
 
-    public static File mergeFiles() throws IOException {
+    public static File mergeFiles(String pathToGenerated, String pathToMerge) throws IOException {
+        LOGGER.info("Going to merge protocols from dir: {}, to file: {}", pathToGenerated, pathToMerge);
         PDFMergerUtility pdfMergerUtility = new PDFMergerUtility();
-        pdfMergerUtility.setDestinationFileName(PathsToProtocols.PATH_TO_MERGED_PROTOCOL_FILE);
-        File generatedProtocolsFolder = new File(PathsToProtocols.PATH_TO_GENERATED_PROTOCOLS_FOLDER);
+        pdfMergerUtility.setDestinationFileName(pathToMerge);
+        File generatedProtocolsFolder = new File(pathToGenerated);
         File[] files = generatedProtocolsFolder.listFiles();
-        for (File file : files){
+        for (File file : files) {
             pdfMergerUtility.addSource(file);
         }
 
         pdfMergerUtility.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
-        LOGGER.info("Successfully merged files!");
-
-        return new File(PathsToProtocols.PATH_TO_MERGED_PROTOCOL_FILE);
+        LOGGER.info("Successfully merged files from dir: {}, to path: {}!", pathToGenerated, pathToMerge);
+        return new File(pathToMerge);
     }
 
 
-    public static void copyFile(File from, File to) throws CannotCopyFileException{
+    public static void copyFile(File from, File to) throws CannotCopyFileException {
         try {
             com.google.common.io.Files.copy(from, to);
         } catch (IOException e) {
@@ -42,6 +42,7 @@ public class FileManager {
 
         LOGGER.info("Successfully copied file from file: {} to file: {}", from.getName(), to.getName());
     }
+
     public static Optional<String> createDirectoryAndDeleteIfExists(Path path) {
         if (Files.exists(path)) {
             Optional<String> errorMessage = deleteDirectory(path);
@@ -54,6 +55,7 @@ public class FileManager {
     }
 
     public static Optional<String> deleteDirectory(Path path) {
+        LOGGER.info("Going to delete directory with path: {}", path);
         try (Stream<Path> walk = Files.walk(path)) {
             walk.map(Path::toFile)
                     .sorted((o1, o2) -> -o1.compareTo(o2))
@@ -67,7 +69,7 @@ public class FileManager {
         return Optional.empty();
     }
 
-    public static Optional<String> createDirectory(Path path){
+    public static Optional<String> createDirectory(Path path) {
         try {
             Files.createDirectory(path);
         } catch (IOException e) {

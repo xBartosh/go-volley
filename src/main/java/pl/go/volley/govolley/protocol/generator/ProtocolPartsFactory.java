@@ -28,7 +28,7 @@ public class ProtocolPartsFactory {
     }
 
     private static Image createImage(Document document) throws BadElementException, IOException {
-        Image image = Image.getInstance(PATH_TO_PROTOCOLS_FOLDER + "/go-volley/go-volley.png");
+        Image image = Image.getInstance(PATH_TO_PROTOCOLS_FOLDER + "go-volley/go-volley.png");
         image.setAlignment(Image.ALIGN_CENTER);
         int indentation = 0;
         int scaleSize = 20;
@@ -67,7 +67,7 @@ public class ProtocolPartsFactory {
         gameTable.setHorizontalAlignment(PdfPTable.ALIGN_LEFT);
         gameTable.setWidthPercentage(100);
 
-        BaseFont baseFont = BaseFont.createFont(PATH_TO_PROTOCOLS_FOLDER + "/font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        BaseFont baseFont = BaseFont.createFont(PATH_TO_PROTOCOLS_FOLDER + "font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         Font teamNameFont = new Font(baseFont, Font.BOLDITALIC);
         teamNameFont.setSize(16);
 
@@ -122,7 +122,7 @@ public class ProtocolPartsFactory {
     }
 
     private static PdfPTable createGameResultsTable() throws DocumentException, IOException {
-        BaseFont baseFont = BaseFont.createFont(PATH_TO_PROTOCOLS_FOLDER + "/font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        BaseFont baseFont = BaseFont.createFont(PATH_TO_PROTOCOLS_FOLDER + "font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         Font font = new Font(baseFont, Font.BOLD);
         font.setSize(9);
 

@@ -14,55 +14,60 @@ import pl.go.volley.govolley.protocol.file.FileManager;
 import pl.go.volley.govolley.protocol.file.PathCreatorUtil;
 import pl.go.volley.govolley.protocol.file.PathsToProtocols;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import static com.itextpdf.text.PageSize.A4;
 import static pl.go.volley.govolley.protocol.file.PathsToProtocols.PATH_TO_PROTOCOLS_FOLDER;
-import static pl.go.volley.govolley.protocol.file.PathsToProtocols.PATH_TO_PROTOCOL_TEMPLATE_FILE;
 
 @Component
 public class ProtocolGenerator {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ProtocolGenerator.class);
-    private final File protocolTemplateFile;
-
-    public ProtocolGenerator() {
-        protocolTemplateFile = new File(PATH_TO_PROTOCOL_TEMPLATE_FILE);
-    }
 
     public Optional<File> generateMergedProtocolForGames(List<Game> games) throws IOException {
-        Path pathToGeneratedProtocolsFolder = Paths.get(PathsToProtocols.PATH_TO_GENERATED_PROTOCOLS_FOLDER);
+        LocalDateTime nowDate = LocalDateTime.now();
+        String pathToGenerated = PathsToProtocols.createPathToGeneratedProtocolsFolder(nowDate);
+        String pathToMerge = PathsToProtocols.createPathToMergedProtocolFile(nowDate);
+        Path pathToGeneratedProtocolsFolder = Paths.get(pathToGenerated);
+
+        LOGGER.info("Going to generate protocols to dir: {}", pathToGenerated);
+
         Optional<String> errorMessage = FileManager.createDirectoryAndDeleteIfExists(pathToGeneratedProtocolsFolder);
         if (errorMessage.isPresent()) {
+            LOGGER.error("{}", errorMessage.get());
             return Optional.empty();
         }
 
         for (Game game : games) {
             try {
-                generateProtocolFromGame(game);
+                generateProtocolFromGame(game, pathToGenerated);
             } catch (CannotCopyFileException | IOException | DocumentException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        File mergedFile = FileManager.mergeFiles();
+        File mergedFile = FileManager.mergeFiles(pathToGenerated, pathToMerge);
         FileManager.deleteDirectory(pathToGeneratedProtocolsFolder);
 
         return Optional.of(mergedFile);
     }
 
 
-    public void generateProtocolFromGame(Game game) throws CannotCopyFileException, IOException, DocumentException {
-        File gameProtocol = new File(PathsToProtocols.PATH_TO_GENERATED_PROTOCOLS_FOLDER + PathCreatorUtil.createFileNameForGameProtocol(game));
+    public void generateProtocolFromGame(Game game, String pathToGenerate) throws CannotCopyFileException, IOException, DocumentException {
+        LOGGER.info("Going to generate protocol for game with ID: {}, to path: {}", game.getId(), pathToGenerate);
+        File gameProtocol = new File(pathToGenerate + PathCreatorUtil.createFileNameForGameProtocol(game));
         Document document = new Document(A4, 30, 30, 0, 5);
         PdfWriter.getInstance(document, new FileOutputStream(gameProtocol));
         document.open();
 
-        BaseFont baseFont = BaseFont.createFont(PATH_TO_PROTOCOLS_FOLDER + "/font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        BaseFont baseFont = BaseFont.createFont(PATH_TO_PROTOCOLS_FOLDER + "font/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         Font font = new Font(baseFont, 12, Font.BOLD);
         ProtocolParts protocolParts = ProtocolPartsFactory.createProtocolParts(document, game, font);
 
@@ -77,5 +82,6 @@ public class ProtocolGenerator {
         document.add(protocolParts.getCaptainsSigns());
 
         document.close();
+        LOGGER.info("Protocol successfully generated for game with ID: {}, to path: {}", game.getId(), pathToGenerate);
     }
 }
