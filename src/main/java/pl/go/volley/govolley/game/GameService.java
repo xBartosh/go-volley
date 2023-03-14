@@ -23,7 +23,7 @@ public class GameService {
 
     @Transactional
     @Caching(evict = {
-            @CacheEvict("protocol-data"),
+            @CacheEvict(value = "protocol-data", allEntries = true),
             @CacheEvict(value = "standings", key = "#result.league.division")
     })
     public Game updateGameScore(Long gameId,
