@@ -11,7 +11,7 @@ public class TimestampUtils {
     private static final String DATETIME_PATTERN = "dd.MM.yyyy HH:mm";
     public static Timestamp createTimestampFromDateAndHour(String date, String hour) throws ParseException {
         String datetimeStr = date + " " + hour;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("DATETIME_PATTERN");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATETIME_PATTERN);
         Date datetime = dateFormat.parse(datetimeStr);
         long time = datetime.getTime();
         return new Timestamp(time);
