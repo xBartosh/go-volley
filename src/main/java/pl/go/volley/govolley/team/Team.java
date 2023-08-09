@@ -23,6 +23,7 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String name;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players = new ArrayList<>();
@@ -41,11 +42,14 @@ public class Team {
 
     @OneToOne(mappedBy = "team", cascade = CascadeType.ALL)
     @JsonIgnore
-    private TeamStatistics teamStatistics;
+    private TeamStatistics teamStatistics = new TeamStatistics();
 
     public Team(String name){
         this.name = name;
     }
 
-
+    public Team(String name, League league) {
+        this.name = name;
+        this.league = league;
+    }
 }
