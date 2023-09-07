@@ -2,6 +2,7 @@ package pl.go.volley.govolley.dataloader;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.go.volley.govolley.game.GameRepository;
 import pl.go.volley.govolley.league.League;
 import pl.go.volley.govolley.league.LeagueRepository;
 import pl.go.volley.govolley.player.Player;
@@ -18,23 +19,26 @@ public class DataLoaderService {
 
     private final DataFileLoader dataFileLoader;
     private final LeagueRepository leagueRepository;
+    private final GameRepository gameRepository;
 
     private final TeamRepository teamRepository;
 
-    public DataLoaderService(DataFileLoader dataFileLoader, LeagueRepository leagueRepository, TeamRepository teamRepository) {
+    public DataLoaderService(DataFileLoader dataFileLoader, LeagueRepository leagueRepository, GameRepository gameRepository, TeamRepository teamRepository) {
         this.dataFileLoader = dataFileLoader;
         this.leagueRepository = leagueRepository;
+        this.gameRepository = gameRepository;
         this.teamRepository = teamRepository;
     }
 
-    public List<League> readLeaguesFromFile(){
+    @Transactional
+    public List<League> readLeaguesFromFile() {
         List<League> leagues = dataFileLoader.readLeaguesFromFile();
         leagueRepository.saveAll(leagues);
         return leagues;
     }
 
     @Transactional
-    public List<Team> readPlayersFromFile(){
+    public List<Team> readPlayersFromFile() {
         Map<String, List<Player>> playersForTeam = dataFileLoader.readPlayersFromFile();
         List<Team> teamsUpdated = new ArrayList<>();
         playersForTeam.forEach((teamName, players) -> {
