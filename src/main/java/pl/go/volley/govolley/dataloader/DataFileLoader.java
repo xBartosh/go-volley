@@ -39,7 +39,7 @@ public class DataFileLoader {
                     league.setTeams(teams);
                     leagues.add(league);
                 }
-                if (line.matches(".*Liga.*")) {
+                if (line.matches(".*LIGA.*")) {
                     games = new ArrayList<>();
                     teams = new ArrayList<>();
                     league = new League();
@@ -50,7 +50,7 @@ public class DataFileLoader {
                     round = Integer.parseInt(roundInfo[1]);
                     date = TimestampUtils.createTimestampFromDateAndHour(roundInfo[2], roundInfo[3].split("\\.")[1]);
                 } else if (!line.isBlank()) {
-                    String[] gameInfo = line.split("\\s+:\\s+");
+                    String[] gameInfo = line.split("\\s+-\\s+");
                     String teamAName = gameInfo[0].trim();
                     String teamBName = gameInfo[1].trim();
                     Team teamA = getTeam(teamAName, teams, league);
@@ -61,6 +61,7 @@ public class DataFileLoader {
             }
         } catch (Exception e) {
             System.err.println("Error reading file: " + e.getMessage());
+            throw new RuntimeException(e);
         }
 
         return leagues;
