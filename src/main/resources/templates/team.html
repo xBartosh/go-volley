@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/team.css}">
 
     <div class="team-name">
-        <p id="team" th:text="${team.name}" placeholder="Edytuj nazwę drużyny" contenteditable="true"></p>
+        <p id="team" th:text="|${team.name} ${team.players.size()}/15|" placeholder="Edytuj nazwę drużyny" contenteditable="true"></p>
     </div>
 
     <div class="players">
